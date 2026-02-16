@@ -5,14 +5,14 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
-RESULTS_DIR = BASE_DIR / "results"
+DATA_DIR = BASE_DIR / 'data'
+RESULTS_DIR = BASE_DIR / 'results'
 
 image_paths = [
-    DATA_DIR / "2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_NDWI.jpg",
-    DATA_DIR / "2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_SWIR.jpg",
-    DATA_DIR / "2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_NDVI.jpg",
-    DATA_DIR / "2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_Highlight_Optimized_Natural_Color-2.jpg",
+    DATA_DIR / '2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_NDWI.jpg',
+    DATA_DIR / '2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_SWIR.jpg',
+    DATA_DIR / '2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_NDVI.jpg',
+    DATA_DIR / '2026-02-13-00_00_2026-02-13-23_59_Sentinel-2_L2A_Highlight_Optimized_Natural_Color-2.jpg',
 ]
 
 
@@ -119,6 +119,8 @@ classification_map = np.zeros((height, width), dtype=np.int32)
 total_pixels = height * width
 processed = 0
 
+print('Запуск рассчета расстояния')
+
 for y in range(height):
     for x in range(width):
         pixel = channels[:, y, x]
@@ -162,4 +164,4 @@ plt.imshow(colored_map)
 plt.axis('off')
 plt.tight_layout()
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-plt.savefig(RESULTS_DIR / "classification_result.png", dpi=300, bbox_inches='tight')
+plt.savefig(RESULTS_DIR / 'classification_result.png', dpi=300, bbox_inches='tight')
