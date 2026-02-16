@@ -151,7 +151,6 @@ for y in range(height):
         # Присвоение пикселя классу
         classification_map[y, x] = assigned_class
 
-# Создание цветовой карты классификации
 colored_map = np.zeros((height, width, 3))
 for class_id, class_name in enumerate(class_names):
     color = np.array(class_colors[class_name]) / 255.0
